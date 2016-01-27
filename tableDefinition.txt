@@ -1,0 +1,31 @@
+--
+-- Table structure for table `public_universities`
+--
+
+DROP TABLE IF EXISTS `public_universities`;
+CREATE TABLE IF NOT EXISTS `public_universities` (
+  `public_university_id` smallint(4) NOT NULL AUTO_INCREMENT,
+  `federal_school_code` int(10) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `county` varchar(50) DEFAULT NULL,
+  `college_system` varchar(50) DEFAULT NULL,
+  `founded` year(4) DEFAULT NULL,
+  `students` int(6) DEFAULT NULL,
+  `fall_2015_acceptance_percentage` int(3) DEFAULT NULL,
+  PRIMARY KEY (`public_university_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admission_offices`
+--
+
+CREATE TABLE IF NOT EXISTS `admission_offices` (
+  `admission_offices_id` smallint(4) NOT NULL AUTO_INCREMENT,
+  `public_university_id` smallint(4) NOT NULL,
+  `phone` varchar(12) DEFAULT NULL,
+  `website` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`admission_offices_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
