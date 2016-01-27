@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `public_universities` (
 --
 
 CREATE TABLE IF NOT EXISTS `admission_offices` (
-  `admission_offices_id` smallint(4) NOT NULL AUTO_INCREMENT,
+  `admissions_offices_id` smallint(4) NOT NULL AUTO_INCREMENT,
   `public_university_id` smallint(4) NOT NULL,
   `phone` varchar(12) DEFAULT NULL,
   `website` varchar(100) DEFAULT NULL,
