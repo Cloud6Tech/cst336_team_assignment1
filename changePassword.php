@@ -39,9 +39,7 @@ session_start();
 			}
 			
 		}
-	else {
-		echo "You must enter all feilds"
-	}
+
 ?>
 
 <!DOCTYPE html>
@@ -78,13 +76,13 @@ session_start();
 		<form method="post">
 
 			old password:
-			<input type='password' name='oldPassword' placeholder="password" />
+			<input type='password' name='oldPassword' placeholder="password" required/>
 			<br>
 			new password:
-			<input type='password' name='newPassword' placeholder="new password" />
+			<input type='password' name='newPassword' placeholder="new password" required/>
 			<br>
 			confirm:
-			<input type='password' name='confirm' placeholder=" confirm password" />
+			<input type='password' name='confirm' placeholder=" confirm password" required />
 			<input type= 'submit' />
 				
 		</form>
