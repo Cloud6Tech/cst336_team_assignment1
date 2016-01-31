@@ -17,10 +17,20 @@
 				)";
 			$stmt = $dbConn -> prepare($sql);
 			$stmt -> execute();
-	
-			//Verifies createPassword and confirm match
-			if ($_POST['createPassword'] == $_POST['confirm'])
-			{
+	        
+			//Check for a dupilicate username
+			$sql = "SELECT *
+					FROM adminTable
+					WHERE username = :username";
+			$stmt = $dbConn->prepare($sql);
+			$stmt->execute(array(":username" => $_POST['createUsername']));
+			$record = $stmt->fetch();
+			
+			if(empty($record)) {
+			  //username doesn't exist
+			  //Verifies createPassword and confirm match
+			  if ($_POST['createPassword'] == $_POST['confirm'])
+			  {
 				$sql = "INSERT INTO adminTable
 						(firstName, lastName, username, password)
 						VALUES
@@ -30,12 +40,12 @@
 		 						":lastName" => $_POST['lastName'],
 		 						":username" => $_POST['createUsername'],
 								":password" => hash("sha1", $_POST['createPassword'])));
-				echo "Record added!";	
-			}
-			
-			else 
-			{
-			echo	"passwords do not match";
+				header("Location: login.php");	
+			  } else {
+				echo	"passwords do not match";
+			  }
+			} else {
+				echo "Account " . $_POST['createUsername'] . " already exists. Please try another.";
 			}
 			
 		}
@@ -84,25 +94,34 @@
 
 
 	<body>
-		<h3> Create A Username and Password </h3>
+		<h3> Create a Username and Password </h3>
 		
 		<form method="post">
-			First Name:
-			<input type='text' name='firstName' placeholder="username" required/>
-			
-			Last Name:
-			<input type='text' name='lastName' placeholder="username" required/>
-			<br>
-			username:
-			<input type='text' name='createUsername' placeholder="username" required/>
-			<br>
-			password:
-			<input type='password' name='createPassword' placeholder="password" required/>
-			<br>
-			confirm:
-			<input type='password' name='confirm' placeholder="password" required/>
-			<input type= 'submit' />
-				
+		  <table>
+		  	<tr>
+		  	  <td>First Name:</td>
+		  	  <td><input type='text' name='firstName' placeholder="Joe" required/></td>
+			</tr>
+			<tr>
+			  <td>Last Name:</td>
+			  <td><input type='text' name='lastName' placeholder="Smith" required/></td>
+			</tr>
+			<tr>
+			  <td>username:</td>
+			  <td><input type='text' name='createUsername' placeholder="username" required/></td>
+			</tr>
+			<tr>
+				<td>password:</td>
+				<td><input type='password' name='createPassword' placeholder="password" required/></td>
+			</tr>
+			<tr>
+				<td>confirm:</td>
+				<td><input type='password' name='confirm' placeholder="password again" required/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" /> <input type="reset" /></td>
+			</tr>
+		  </table>				
 		</form>
 		<br>
 		<a href="login.php">back to login page</a>
