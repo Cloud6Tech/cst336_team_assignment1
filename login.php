@@ -7,9 +7,9 @@ session_start();
 	if (isset($_POST['username']) && isset($_POST['password']))
 		{
 
-			require './db_connection.php'; //credentials for data base login
+			require 'db_connection.php'; //credentials for data base login
 			//attempt to pull user info based on password and username provided in form
-			$sql = "SELECT * FROM adminTable 
+			$sql = "SELECT * FROM user 
 				 WHERE username = :username 
 				 AND password = :password";
 		
@@ -23,16 +23,13 @@ session_start();
 			if (!empty($record))
 			{
 				
-				$sql = "INSERT INTO userLog
-						(username)
-						VALUES
-						(:username)";
-				$stmt = $dbConn -> prepare($sql);
-				$stmt -> execute(array (":username" => $_POST['username']));
+				//$sql = "INSERT INTO userLog (username) VALUES (:username)";
+				//$stmt = $dbConn -> prepare($sql);
+				//$stmt -> execute(array (":username" => $_POST['username']));
 				
 				$_SESSION['username'] = $record['username'];
 				$_SESSION['firstName'] = $record['firstName'];
-				header("Location: assignment4.php");
+				header("Location: findSchool.php");
 	
 			}
 			else 

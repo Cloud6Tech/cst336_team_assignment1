@@ -6,13 +6,14 @@
 		if (isset($_POST['createUsername']) && isset($_POST['createPassword']) && isset($_POST['confirm'])  && isset($_POST['firstName'])&& isset($_POST['lastName']))
 		{
 			//create admin table to store user names. can be in separate file
-			$sql= "CREATE TABLE IF NOT EXISTS `adminTable` 
+			$sql= "CREATE TABLE IF NOT EXISTS `user` 
 				(
 				`id` int(11) NOT NULL AUTO_INCREMENT,
   				`firstName` varchar(50),
  				`lastName` varchar(50),
  				`username` varchar(50),
  				`password` varchar(50),
+ 				`isAdmin` BOOLEAN DEFAULT FALSE,
   				PRIMARY KEY (`id`)
 				)";
 			$stmt = $dbConn -> prepare($sql);
@@ -20,7 +21,7 @@
 	        
 			//Check for a dupilicate username
 			$sql = "SELECT *
-					FROM adminTable
+					FROM user
 					WHERE username = :username";
 			$stmt = $dbConn->prepare($sql);
 			$stmt->execute(array(":username" => $_POST['createUsername']));
@@ -31,7 +32,7 @@
 			  //Verifies createPassword and confirm match
 			  if ($_POST['createPassword'] == $_POST['confirm'])
 			  {
-				$sql = "INSERT INTO adminTable
+				$sql = "INSERT INTO user
 						(firstName, lastName, username, password)
 						VALUES
 						(:firstName, :lastName, :username, :password)";
