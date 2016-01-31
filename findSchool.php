@@ -54,6 +54,22 @@
 				  fall_2015_acceptance_percentage
 				FROM public_universities "
 				. $where;
+		if(isset($_GET['sort'])) {
+			switch($_GET['sort']){
+				case "name":
+					$sql .= ' ORDER BY name';
+					break;
+				case "city":
+					$sql .= ' ORDER BY city';
+					break;
+				case "size":
+					$sql .= ' ORDER BY students';
+					break;
+				case "rate":
+					$sql .= ' ORDER BY fall_2015_acceptance_percentage';
+					break;
+			}
+		}
 		$stmt = $dbConn->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll();		
@@ -77,6 +93,9 @@
 			$where .= " AND ";
 		}
 		$where .= "public_university_id IS NOT NULL ";
+		$_SESSION['where'] = $where;
+	} else if (isset($_SESSION['where'])) {
+		$where = $_SESSION['where'];
 	}
 	
 	
@@ -140,7 +159,7 @@
 	</form>
   </div>
   <?php
-    if (isset($_POST['submit']) ) {
+    if (isset($_POST['submit']) or isset($_SESSION['where'])) {
   ?>
   <div id="results">
   	<form>
@@ -148,11 +167,11 @@
   			<tr>
   				<th>Federal Code</th>
   				<th>System</th>
-  				<th>University</th>
-  				<th>City</th>
+  				<th><a href="findSchool.php?sort=name">University</a></th>
+  				<th><a href="findSchool.php?sort=city">City</a></th>
   				<th>County</th>
-  				<th>Student Size</th>
-  				<th>Acceptance Rate (%)</th>
+  				<th><a href="findSchool.php?sort=size">Student Size</a></th>
+  				<th><a href="findSchool.php?sort=rate">Acceptance Rate (%)</a></th>
   			</tr>
   			<?php
   			  $records = getSchools($where);
