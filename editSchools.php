@@ -95,6 +95,23 @@
 		  ":id" => $_POST['id']));
 	}
 	
+	function addUniversity()
+	{
+		global $dbConn;
+		
+		$sql = "INSERT INTO public_universities (federal_school_code, name, city, county, college_system, founded, students, fall_2015_acceptance_percentage)
+					VALUES (:code,:name,:city,:county,:college_system,:founded,:students,:rate)";
+			$stmt = $dbConn -> prepare($sql);
+			return $stmt -> execute( array(":code" => $_POST['newCode'],
+									":name" => $_POST['newName'],
+									":city" => $_POST['newCity'],
+									":county" => $_POST['newCounty'],
+									":college_system" => $_POST['newCollegeSystem'],
+									":founded" => $_POST['newFounded'],
+									":students" => $_POST['newStudents'],
+									":rate" => $_POST['newRate']));	
+	}
+	
   	if(($_SESSION['username']) and isAdmin($_SESSION['username'])) {
   		$isAdmin = true;
   	} else {
@@ -132,6 +149,7 @@
 		?>
       </select>
       <input type="submit" value="Get School Info" />
+      <input type="submit" name="newSchool" value="Add New School" />
     </form>
     </div>
     <?php
@@ -146,7 +164,45 @@
 	  } 
       echo '</div>'; 
 	  
-      if( isset($_GET['univId']) and $_GET['univId'] != -1) {
+	  //Allows the addition of a new school
+	  if (isset($_GET['newSchool']))
+	  {
+	  	echo '<div>';
+      	echo '<form method="post">';
+		echo '<table>';
+		echo '<tr><td>School Name:</td>';
+		echo '<td><input type="text" name="newName" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>Federal School Code:</td>';
+		echo '<td><input type="number" size="6" name="newCode" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>City:</td>';
+		echo '<td><input type="text" name="newCity" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>County:</td>';
+		echo '<td><input type="text" name="newCounty" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>College System:</td>';
+		echo '<td><input type="text" name="newCollegeSystem" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>Founded:</td>';
+		echo '<td><input type="number" name="newFounded" size="5" min="1900" max="2016" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>Acceptance Rate<br> (Fall 2015):</td>';
+		echo '<td><input type="number" name="newRate" min="1" max="100" value="' . '"/>' . '%</td></tr>';
+		echo '<tr><td>Students:</td>';
+		echo '<td><input type="number" size="8" name="newStudents" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td><input type="submit" name="addUniversity" value="Add"></td></tr>';
+		if ( isset($_POST['addUniversity'])) {	
+      	  if( addUniversity() ) 
+      	  {
+      		echo "<p><b>New School Added Successfully</b></p>";
+      	  } 
+      	  else 
+      	  {
+      		echo "<p><b>Failed to Add New School</b></p>";
+      	  }
+        }		
+		echo '</table>';
+		echo '</form>';
+		echo '</div>';
+	  }
+	  
+      if( isset($_GET['univId']) and $_GET['univId'] != -1 and !isset($_GET['newSchool'])) {
       	echo '<div>';
       	echo '<form method="post">';
 		echo '<input type="hidden" name="id" value="' . $_GET['univId'] . '">';
