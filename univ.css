@@ -1,0 +1,41 @@
+form {
+	display: inline;
+}
+#admissionsInfo {
+	border: solid black 1px;
+	margin: 0 auto;
+	padding: 5px;
+	text-align: center;
+	width: 350px;
+}
+#admissionsInfo table,.accountForm table {
+	margin: 0 auto;
+}
+#navBar {
+	padding: 20px;
+	text-align: right;
+}
+#navBar h1 {
+	text-align: center;
+}
+.accountForm {
+	background-color: #CCCCCC;
+	border-style: outset;
+	padding: 25px;
+	padding-top: 10px;
+	margin: 0 auto;
+	text-align: right;
+	width: 325px;
+}
+.accountForm h3 {
+	text-align: center;
+}
+.titleLink {
+	text-decoration: none;
+}
+.titleLink:visited {
+	color: black;
+}
+.titleLink:hover {
+	text-decoration: underline;
+}

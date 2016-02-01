@@ -59,34 +59,32 @@ session_start();
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 				
-		<style>
-			body{background-color: #CCCCCC}
-			form{display: inline}
-		</style>
+		<link rel="stylesheet" type="text/css" href="univ.css">
 		
 	</head>
 
 
 	<body>
-		<h3> Site Login </h3>
-		<div>
-		<form method="post">
-          <table>
-			<tr>
-			  <td>username:</td>
-			  <td><input type="text" name="username" placeholder="username" /></td>
-			</tr>
-			<tr>
-			  <td>password:</td>
-			  <td><input type="password" name="password" placeholder="password" /></td>
-			</tr>
-			<tr>
-			  <td colspan="2"><input type="submit" /> <input type="reset" /></td>			
-		 </table>
-		</form>
+		<?php include 'navBar.php' ?>
+		
+		<div class="accountForm">
+			<h3> Site Login </h3>
+			<form method="post">
+		          <table>
+					<tr>
+					  <td>username:</td>
+					  <td><input type="text" name="username" placeholder="username" /></td>
+					</tr>
+					<tr>
+					  <td>password:</td>
+					  <td><input type="password" name="password" placeholder="password" /></td>
+					</tr>
+					<tr>
+					  <td colspan="2" style="text-align: right"><input type="submit" /> <input type="reset" /></td>			
+				 </table>
+			</form>
+			<br><a href="createAccount.php">Click here to create an account.</a>
 		</div>
-		<div>
-		<a href="createAccount.php">Click here to create an account</a>
-		</div>
+		
 	</body>
 </html>

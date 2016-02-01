@@ -15,6 +15,8 @@
   <meta name="author" content="Jason Lloyd">
 
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  
+  <link rel="stylesheet" type="text/css" href="univ.css">
 
   <?php
     require 'db_connection.php';
@@ -104,7 +106,7 @@
 </head>
 
 <body>
-	<div id="headerBar"><a href="logout.php">Logout</a></div>
+	<?php include 'navBar.php' ?>
   <div>
 
 	<p>Welcome to Cloud6 Tech's School Finder. Select the options that mean the most to you, and hit submit!</p>

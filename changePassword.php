@@ -9,9 +9,6 @@ session_start();
 	{
 		header("Location: login.php");
 	}
-	
-	echo "Hello " . $_SESSION['firstName'];
-
 
 	//verifies user has set all feilds	
 	if (isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['confirm'])  )
@@ -61,34 +58,37 @@ session_start();
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		
-		
-		<style>
-			body{background-color: #CCCCCC}
-			form{display: inline}
-		</style>
+		<link rel="stylesheet" type="text/css" href="univ.css">
 		
 	</head>
 
 
 	<body>
-		<h3> Update your password </h3>
-		
-		<form method="post">
-
-			old password:
-			<input type='password' name='oldPassword' placeholder="password" required/>
-			<br>
-			new password:
-			<input type='password' name='newPassword' placeholder="new password" required/>
-			<br>
-			confirm:
-			<input type='password' name='confirm' placeholder=" confirm password" required />
-			<input type= 'submit' />
-				
-		</form>
-		<br>
-		<a href="login.php">back to login page</a>
-		<br>
-		<a href="signinLog.php">Veiw your login history</a>
+		<?php include 'navBar.php' ?>
+		<div class="accountForm">
+			<h3> Update your password </h3>
+			
+			<form method="post">
+				<table>
+					<tr>
+						<th>Current password:</th>
+						<td><input type='password' name='oldPassword' placeholder="password" required/></td>
+					</tr>
+					<tr>
+						<th>New password:</th>
+						<td><input type='password' name='newPassword' placeholder="new password" required/></td>
+					</tr>
+					<tr>
+						<th>Confirm:</th>
+						<td><input type='password' name='confirm' placeholder="confirm password" required /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type= 'submit' /></td>
+					</tr>
+				</table>
+			</form>
+			<!--<br>
+			<a href="signinLog.php"><h3>View your login history</h3></a>-->
+		</div>
 	</body>
 </html>

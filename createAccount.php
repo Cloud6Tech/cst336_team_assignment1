@@ -69,62 +69,48 @@
 
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico">
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">	
 		
-		 <script>
-    
-    	function confirmDelete(stadiumName)
-    	 {
-
-      		var remove = confirm("Are you sure you want to delete " + stadiumName + "?");
-
-      		if (!remove){   // remove == false
-          	event.preventDefault();
-      		}        
-    	}
-      
-  </script>
-		
-		
-		<style>
-			body{background-color: #CCCCCC}
-			form{display: inline}
-		</style>
+		<link rel="stylesheet" type="text/css" href="univ.css">
 		
 	</head>
 
 
 	<body>
-		<h3> Create a Username and Password </h3>
-		
-		<form method="post">
-		  <table>
-		  	<tr>
-		  	  <td>First Name:</td>
-		  	  <td><input type='text' name='firstName' placeholder="Joe" required/></td>
-			</tr>
-			<tr>
-			  <td>Last Name:</td>
-			  <td><input type='text' name='lastName' placeholder="Smith" required/></td>
-			</tr>
-			<tr>
-			  <td>username:</td>
-			  <td><input type='text' name='createUsername' placeholder="username" required/></td>
-			</tr>
-			<tr>
-				<td>password:</td>
-				<td><input type='password' name='createPassword' placeholder="password" required/></td>
-			</tr>
-			<tr>
-				<td>confirm:</td>
-				<td><input type='password' name='confirm' placeholder="password again" required/></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" /> <input type="reset" /></td>
-			</tr>
-		  </table>				
-		</form>
-		<br>
-		<a href="login.php">back to login page</a>
+		<?php include 'navBar.php' ?>
+	
+		<div class="accountForm">
+			<h3> Create a Username and Password </h3>
+			
+			<form method="post">
+			  <table>
+			  	<tr>
+			  	  <td>First Name:</td>
+			  	  <td><input type='text' name='firstName' placeholder="Joe" required/></td>
+				</tr>
+				<tr>
+				  <td>Last Name:</td>
+				  <td><input type='text' name='lastName' placeholder="Smith" required/></td>
+				</tr>
+				<tr>
+				  <td>username:</td>
+				  <td><input type='text' name='createUsername' placeholder="username" required/></td>
+				</tr>
+				<tr>
+					<td>password:</td>
+					<td><input type='password' name='createPassword' placeholder="password" required/></td>
+				</tr>
+				<tr>
+					<td>confirm:</td>
+					<td><input type='password' name='confirm' placeholder="password again" required/></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" /> <input type="reset" /></td>
+				</tr>
+			  </table>				
+			</form>
+			<br>
+			<a href="login.php">Go back</a>
+		</div>
 	</body>
 </html>
