@@ -16,6 +16,7 @@
 		$stmt -> execute(array (":univId" => $_GET['id']));
 		return $stmt->fetch();
 	}
+	
 ?>
 
 <!DOCTYPE html>
