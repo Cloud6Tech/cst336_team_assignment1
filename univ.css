@@ -1,9 +1,11 @@
 form {
 	display: inline;
 }
+
 #admissionsInfo {
 	border: solid black 1px;
 	margin: 0 auto;
+	margin-top: 5px;
 	padding: 5px;
 	text-align: center;
 	width: 350px;
@@ -12,11 +14,79 @@ form {
 	margin: 0 auto;
 }
 #navBar {
+	font-family: Arial, Helvetica, sans-serif;
 	padding: 20px;
 	text-align: right;
+	background-color: #002a4e;
+	color: white;
+	font-size: 12px;	
 }
+
+#navBar a:link {
+	color: white;
+	text-decoration: none;
+}
+
+#navBar a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+#navBar a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+#navBar a:hover {
+	color: white;
+	text-decoration: none;
+}
+
 #navBar h1 {
 	text-align: center;
+	color: white;
+}
+
+#showSchools {
+	border:#ffffff normal 1px;
+	border-collapse:collapse;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0 auto;
+	color: #CCC;
+	text-align: center;
+}
+
+#showSchools th {
+	background-color: #002a4e;
+	color: white;
+	padding: 3px;
+}
+
+#showSchools a:link{
+	color:white;
+	text-decoration:none;
+}
+
+#showSchools a:visited{
+	color:white;
+	text-decoration:none;
+}
+
+#showSchools tr:nth-child(even){
+	background: #446a59;
+}
+
+#showSchools tr:nth-child(odd) {
+	background: #8b7e56;
+}
+
+#showSchools td {
+	padding: 3px;
+}
+
+#schoolFinder {
+	margin: 0 auto;
 }
 .accountForm {
 	background-color: #CCCCCC;

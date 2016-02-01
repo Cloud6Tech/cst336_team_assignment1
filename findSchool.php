@@ -109,12 +109,12 @@
 	<?php include 'navBar.php' ?>
   <div>
 
-	<p>Welcome to Cloud6 Tech's School Finder. Select the options that mean the most to you, and hit submit!</p>
+	<p style="text-align:center;">Welcome to Cloud6 Tech's School Finder. Select the options that mean the most to you, and hit submit!</p>
 	
   </div>	
-  <div id="search">
-	<form id="schoolFinder" method="POST">
-		<table>
+  <div border="1">
+	<form method="POST">
+		<table id="schoolFinder">
 			<tr>
 				<td>System:</td>
 				<td><select name="system">
@@ -165,15 +165,15 @@
   ?>
   <div id="results">
   	<form>
-  		<table border="1">
+  		<table id="showSchools">
   			<tr>
-  				<th>Federal Code</th>
+  				<th>Federal<br/>Code</th>
   				<th>System</th>
   				<th><a href="findSchool.php?sort=name">University</a></th>
   				<th><a href="findSchool.php?sort=city">City</a></th>
   				<th>County</th>
   				<th><a href="findSchool.php?sort=size">Student Size</a></th>
-  				<th><a href="findSchool.php?sort=rate">Acceptance Rate (%)</a></th>
+  				<th><a href="findSchool.php?sort=rate">Acceptance<br/> Rate (%)</a></th>
   			</tr>
   			<?php
   			  $records = getSchools($where);

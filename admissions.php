@@ -37,9 +37,8 @@
 				// Get university admissions info
 				$univInfo = getAdmissionsInfo();
 			?>
-			
 			<table class="admissionsInfo">
-				<tr><th><?= $univInfo['name'] ?></th></tr>
+				<tr><th><?= htmlentities($univInfo['name']) ?></th></tr>
 				<tr><td><?= $univInfo['phone'] ?></td></tr>
 				<tr><td><a href='<?= $univInfo['website'] ?>'><?= $univInfo['website'] ?></a></td></tr>
 			</table>

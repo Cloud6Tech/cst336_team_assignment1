@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS `public_universities` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admission_offices`
+-- Table structure for table `admissions_offices`
 --
 
-CREATE TABLE IF NOT EXISTS `admission_offices` (
+CREATE TABLE IF NOT EXISTS `admissions_offices` (
   `admissions_offices_id` smallint(4) NOT NULL AUTO_INCREMENT,
   `public_university_id` smallint(4) NOT NULL,
   `phone` varchar(12) DEFAULT NULL,
