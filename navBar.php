@@ -1,7 +1,7 @@
 <?php 
 	require_once 'db_connection.php';
 	
-	function isAdmin(){
+	function isAdminCheck(){
 		global $dbConn;
 		
 		$sql = "SELECT isAdmin
@@ -19,7 +19,7 @@
 	<?php
 		if(!empty($_SESSION['username'])) {
 			echo "Welcome, <a href='changePassword.php'>" . $_SESSION['username'] . "</a> | ";
-			if (isAdmin()) { echo "<a href='editSchools.php'>Edit DB</a> | "; }
+			if (isAdminCheck()) { echo "<a href='editSchools.php'>Edit DB</a> | "; }
 			echo "<a href='mySchools.php'>My Schools | ";
 			echo "<a href='logout.php'>Logout</a>";
 		}
