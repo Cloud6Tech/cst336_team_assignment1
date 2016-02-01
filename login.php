@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_destroy();
+session_start();
 ?>
 
 <?php
@@ -34,7 +36,7 @@ session_start();
 			}
 			else 
 			{
-			echo "incorrect username or password";	
+			$invalidLogon = true;	
 			}
 		
 		}
@@ -84,7 +86,12 @@ session_start();
 				 </table>
 			</form>
 			<br><a href="createAccount.php">Click here to create an account.</a>
+			<?php 
+			 if(isset($invalidLogon) and $invalidLogon == true) {
+			 	echo '<p>Invalid Username or Password</p>';
+			 }
+			?>
 		</div>
-		
+
 	</body>
 </html>

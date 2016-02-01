@@ -13,7 +13,7 @@ session_start();
   <title>Edit University Data</title>
   <meta name="description" content="">
   <meta name="author" content="Jason Lloyd">
-
+  <link rel="stylesheet" type="text/css" href="univ.css">
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
   <?php
@@ -105,6 +105,7 @@ session_start();
   <?php
     if (isset($isAdmin) and $isAdmin) {
   ?>
+  <?php include 'navBar.php' ?>
   <div>
     <h2>Database Editor</h2>
     <div id="instructions">
@@ -128,9 +129,6 @@ session_start();
 		?>
       </select>
       <input type="submit" value="Get School Info" />
-    </form>
-    <form name="addUniversity">
-    	<input type="submit" value="Add University">
     </form>
     </div>
     <?php
