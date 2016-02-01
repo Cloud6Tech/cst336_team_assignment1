@@ -1,4 +1,6 @@
-
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
   
 <?php
-  require 'connection.php';
+  require 'db_connection.php';
  
   function getAllUniversities() {
   	global $dbConn;
@@ -106,35 +108,29 @@
       
       if( isset($_GET['univId']) and $_GET['univId'] != -1) {
       	echo '<form method="post" action="updateUniversity.php">';
+		echo '<input type="hidden" name="code" value="' . $_GET['univId'] . '">';
+		echo '<table>';
       	$school = getUniversityById($_GET['univId']);
-		echo 'Federal School Code: ' . $school['federal_school_code'];
-		echo ' <input type="hidden" name="code" value="' . $_GET['univId'] . '">';
-		echo ' <input type="submit" name="code" value="Update"><br/>';
-		echo 'City: ' . $school['city'];
-		echo ' <input type="hidden" name="city" value="' . $_GET['univId'] . '">';
-		echo ' <input type="submit" name="city" value="Update"><br/>';
-		echo 'County: ' . $school['county'];
-		echo ' <input type="hidden" name="county" value="' . $_GET['univId'] . '">';
-		echo ' <input type="submit" name="county" value="Update"><br/>';  
-		echo 'Founded: ' . $school['founded'];
-		echo ' <input type="hidden" name="founded" value="' . $_GET['univId'] . '">';
-		echo ' <input type="submit" name="founded" value="Update"><br/>'; 
-		echo 'Acceptance Rate (Fall 2015): ' . $school['fall_2015_acceptance_percentage'] . '%';
-		echo ' <input type="hidden" name="acceptanceRate" value="' . $_GET['univId'] . '">';
-		echo ' <input type="submit" name="acceptanceRate" value="Update"><br/>';
-		echo 'Students: ' . $school['students'];
-		echo ' <input type="hidden" name="students" value="' . $_GET['univId'] . '">';
-		echo ' <input type="submit" name="students" value="Update"><br/>'; 
+		echo '<tr><td>Federal School Code:</td><td> ' . $school['federal_school_code'] . '</td></tr>';
+		echo '<tr><td>City:</td><td>' . $school['city'] . '</td></tr>';
+		echo '<tr><td>County:</td><td>' . $school['county'] . '</td></tr>';
+		echo '<tr><td>Founded:</td><td>' . $school['founded'] . '</td></tr>';
+		echo '<tr><td>Acceptance Rate<br> (Fall 2015):</td><td>' . $school['fall_2015_acceptance_percentage'] . '%</td></tr>';
+		echo '<tr><td>Students:</td><td>' . $school['students']. '</td></tr>';
+		echo '<tr><td><input type="submit" value="Update Info"></td></tr>';
+		echo '</table>'; 
 		echo '</form>';
 		echo '<h3>Admissions Info</h3>';
 		echo '<form method="post" action="updateAdmissions.php">';
 		$admissions = getAdmissionsOffice($_GET['univId']);
-		echo 'Website: ' . $admissions['website'];
-		echo ' <input type="hidden" name="website" value="' . $admissions['admissions_offices_id'] . '">';
-		echo ' <input type="submit" name="website" value="Update"><br/>';
-		echo 'Phone: ' . $admissions['phone'];
-		echo ' <input type="hidden" name="phone" value="' . $admissions['admissions_offices_id'] . '">';
-		echo ' <input type="submit" name="phone" value="Update"><br/>';
+		echo '<input type="hidden" name="code" value="' . $admissions['admissions_offices_id'] . '">';
+		echo '<table>';
+		echo '<tr><td>Website:</td><td>' . $admissions['website'] . '</td>';
+		echo '<td><input type="hidden" name="website" value="' . $admissions['admissions_offices_id'] . '"></td></tr>';
+		echo '<tr><td>Phone:</td><td>' . $admissions['phone'] . '</td></tr>';
+		echo '<tr><td><input type="submit" value="Update"></td></tr>';
+		echo '</table>';
+		echo '</form>';
       }    
 	?>
 	</p>

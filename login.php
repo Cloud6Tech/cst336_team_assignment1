@@ -7,9 +7,9 @@ session_start();
 	if (isset($_POST['username']) && isset($_POST['password']))
 		{
 
-			require './db_connection.php'; //credentials for data base login
-			//atempt to pull user info based on password and username provided in form
-			$sql = "SELECT * FROM adminTable 
+			require 'db_connection.php'; //credentials for data base login
+			//attempt to pull user info based on password and username provided in form
+			$sql = "SELECT * FROM user 
 				 WHERE username = :username 
 				 AND password = :password";
 		
@@ -23,17 +23,14 @@ session_start();
 			if (!empty($record))
 			{
 				
-				$sql = "INSERT INTO userLog
-						(username)
-						VALUES
-						(:username)";
-				$stmt = $dbConn -> prepare($sql);
-				$stmt -> execute(array (":username" => $_POST['username']));
+				//$sql = "INSERT INTO userLog (username) VALUES (:username)";
+				//$stmt = $dbConn -> prepare($sql);
+				//$stmt -> execute(array (":username" => $_POST['username']));
 				
 				$_SESSION['username'] = $record['username'];
 				$_SESSION['firstName'] = $record['firstName'];
-				header("Location: changePassword.php");
-				//header("Location:http://hosting.otterlabs.org/classes/lloydjasonk/html/week4/assignment4.php");
+				header("Location: findSchool.php");
+	
 			}
 			else 
 			{
@@ -72,17 +69,24 @@ session_start();
 
 	<body>
 		<h3> Site Login </h3>
-		
+		<div>
 		<form method="post">
-			username:
-			<input type='text' name='username' placeholder="username" />
-			<br>
-			password:
-			<input type='password' name='password' placeholder="password" />
-			<input type= 'submit' />			
+          <table>
+			<tr>
+			  <td>username:</td>
+			  <td><input type="text" name="username" placeholder="username" /></td>
+			</tr>
+			<tr>
+			  <td>password:</td>
+			  <td><input type="password" name="password" placeholder="password" /></td>
+			</tr>
+			<tr>
+			  <td colspan="2"><input type="submit" /> <input type="reset" /></td>			
+		 </table>
 		</form>
-		<br>
+		</div>
+		<div>
 		<a href="createAccount.php">Click here to create an account</a>
-		
+		</div>
 	</body>
 </html>
