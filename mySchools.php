@@ -16,11 +16,11 @@
 		$stmt -> execute( array(':username' => $_SESSION['username']));
 		$univIds = $stmt -> fetchAll();
 		
-		$sql = "SELECT admission_offices.phone, admission_offices.website, public_universities.name 
-				FROM admission_offices
+		$sql = "SELECT admissions_offices.phone, admissions_offices.website, public_universities.name 
+				FROM admissions_offices
 				INNER JOIN public_universities
-				ON public_universities.public_university_id = admission_offices.public_university_id
-				WHERE admission_offices.public_university_id = :univId"; 
+				ON public_universities.public_university_id = admissions_offices.public_university_id
+				WHERE admissions_offices.public_university_id = :univId"; 
 		$stmt = $dbConn -> prepare($sql);
 		
 		$results = array();
