@@ -11,8 +11,6 @@ if(empty($_SESSION['username'])) { header("Location: login.php"); }
 	require 'db_connection.php'; //credentials for data base login
 	
 	//pulls login times related to username
-	echo "Hello " . $_SESSION['firstName'];
-	
 	$sql = "SELECT * FROM userLog
 				 WHERE username = :username";
 		
@@ -40,18 +38,19 @@ if(empty($_SESSION['username'])) { header("Location: login.php"); }
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 				
-		<style>
-			body{background-color: #CCCCCC}
-			form{display: inline}
-		</style>
+		<link rel="stylesheet" type="text/css" href="univ.css">
 		
 	</head>
 
 
 	<body>
-		<h3> Your Login History </h3>
+		<?php include 'navBar.php' ?>
 		
-		
+		<h3> Your Login History 
+			<form action='changePassword.php'>
+				<input type='submit' value='Go Back'>
+			</form>
+		</h3>
 		
 	<?php
 		//prints user logs oldest to newest
@@ -59,11 +58,11 @@ if(empty($_SESSION['username'])) { header("Location: login.php"); }
 		foreach ($userLogs as $log) 
 		{
 			$userRecord++;
-			echo "Record " . $userRecord . ": " . $log['loginTime'];	
+			echo "Record " . $userRecord . ": " . $log['loginTime'] . "<br>";	
 		}
-	
-	
 	?>
+	
+	
 
 
 

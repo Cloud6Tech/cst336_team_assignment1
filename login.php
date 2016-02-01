@@ -24,10 +24,10 @@ session_start();
 			//if record is found session variables are stored and user is directed to a new page
 			if (!empty($record))
 			{
-				
-				//$sql = "INSERT INTO userLog (username) VALUES (:username)";
-				//$stmt = $dbConn -> prepare($sql);
-				//$stmt -> execute(array (":username" => $_POST['username']));
+				include 'userLog.php';
+				$sql = "INSERT INTO userLog (username) VALUES (:username)";
+				$stmt = $dbConn -> prepare($sql);
+				$stmt -> execute(array (":username" => $_POST['username']));
 				
 				$_SESSION['username'] = $record['username'];
 				$_SESSION['firstName'] = $record['firstName'];
