@@ -75,22 +75,23 @@ session_start();
 		          <table>
 					<tr>
 					  <td>username:</td>
-					  <td><input type="text" name="username" placeholder="username" /></td>
+					  <td><input type="text" name="username" placeholder="username" required/></td>
 					</tr>
 					<tr>
 					  <td>password:</td>
-					  <td><input type="password" name="password" placeholder="password" /></td>
+					  <td><input type="password" name="password" placeholder="password" required/></td>
 					</tr>
 					<tr>
 					  <td colspan="2" style="text-align: right"><input type="submit" /> <input type="reset" /></td>			
 				 </table>
 			</form>
-			<br><a href="createAccount.php">Click here to create an account.</a>
 			<?php 
-			 if(isset($invalidLogon) and $invalidLogon == true) {
-			 	echo '<p>Invalid Username or Password</p>';
-			 }
+				if(isset($invalidLogon) and $invalidLogon == true) {
+					echo '<p style="color:red">Invalid Username or Password</p>';
+				}
 			?>
+			<br><a href="createAccount.php">Click here to create an account.</a>
+
 		</div>
 
 	</body>
