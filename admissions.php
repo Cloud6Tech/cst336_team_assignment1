@@ -1,4 +1,6 @@
 <?php
+	session_start();	
+
 	// Open database connection
 	require 'db_connection.php';
 	
@@ -41,6 +43,21 @@
 				<tr><th><?= htmlentities($univInfo['name']) ?></th></tr>
 				<tr><td><?= $univInfo['phone'] ?></td></tr>
 				<tr><td><a href='<?= $univInfo['website'] ?>'><?= $univInfo['website'] ?></a></td></tr>
+				<tr><td>
+					<form method='post' action='updateList.php'>
+						<input type="hidden" name="redirect" value="admissions.php?id=<?=$_GET['id']?>">
+						<input type="hidden" name="univId" value=<?=$_GET['id']?>>
+						<?php
+							include 'updateList.php';
+							
+							if (inUserList($_GET['id'])) {
+								echo '<input type="submit" name="remove" value="Remove from My List">';
+							} else {
+								echo '<input type="submit" name="add" value="Add to My List">';
+							}
+					?>
+					</form>
+				</td></tr>
 			</table>
 			
 		</div>
