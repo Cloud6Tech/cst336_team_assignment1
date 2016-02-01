@@ -43,10 +43,10 @@
 								":password" => hash("sha1", $_POST['createPassword'])));
 				header("Location: login.php");	
 			  } else {
-				echo	"passwords do not match";
+				$invalidPassword = true;
 			  }
 			} else {
-				echo "Account " . $_POST['createUsername'] . " already exists. Please try another.";
+				$invalidUsername = true;
 			}
 			
 		}
@@ -86,29 +86,36 @@
 			  <table>
 			  	<tr>
 			  	  <td>First Name:</td>
-			  	  <td><input type='text' name='firstName' placeholder="Joe" required/></td>
+			  	  <td><input type='text' name='firstName' <?= (isset($_POST['firstName'])) ? "value='" . $_POST['firstName'] ."'" : "placeholder='Joe'" ?> required/></td>
 				</tr>
 				<tr>
 				  <td>Last Name:</td>
-				  <td><input type='text' name='lastName' placeholder="Smith" required/></td>
+				  <td><input type='text' name='lastName' <?= (isset($_POST['lastName'])) ? "value='" . $_POST['lastName'] ."'" : "placeholder='Smith'" ?> required/></td>
 				</tr>
 				<tr>
 				  <td>username:</td>
-				  <td><input type='text' name='createUsername' placeholder="username" required/></td>
+				  <td><input type='text' name='createUsername' <?= (isset($_POST['createUsername']) and !isset($invalidUsername)) ? "value='" . $_POST['createUsername'] ."'" : "placeholder='username'" ?> required/></td>
 				</tr>
 				<tr>
 					<td>password:</td>
-					<td><input type='password' name='createPassword' placeholder="password" required/></td>
+					<td><input type='password' name='createPassword' <?= (isset($_POST['createPassword']) and !isset($invalidPassword)) ? "value='" . $_POST['createPassword'] ."'" : "placeholder='password'" ?> required/></td>
 				</tr>
 				<tr>
 					<td>confirm:</td>
-					<td><input type='password' name='confirm' placeholder="password again" required/></td>
+					<td><input type='password' name='confirm' <?= (isset($_POST['confirm']) and !isset($invalidPassword)) ? "value='" . $_POST['confirm'] ."'" : "placeholder='password again'" ?> required/></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" /> <input type="reset" /></td>
+					<td colspan="2"><input type="submit" /></td>
 				</tr>
 			  </table>				
 			</form>
+			<?php 
+				if(isset($invalidPassword) and $invalidPassword == true) {
+					echo '<p style="color:red">Passwords do not match.</p>';
+				} elseif (isset($invalidUsername) and $invalidUsername == true) {
+					echo '<p style="color:red">Username is already in use.</p>';
+				}
+			?>
 			<br>
 			<a href="login.php">Go back</a>
 		</div>
