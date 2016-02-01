@@ -1,17 +1,15 @@
 <?php
 session_start();
+
+// Redirect to login page if not logged in
+if(empty($_SESSION['username'])) { header("Location: login.php"); } 
+
 ?>
 
 <?php
 
-	require './db_connection.php'; //credentials for data base login
+	require 'db_connection.php'; //credentials for data base login
 	
-	
-	//catch to see if user has logged in and revets to login page if not
-	if(!isset($_SESSION['username']))
-	{
-		header("Location: login.php");
-	}
 	//pulls login times related to username
 	echo "Hello " . $_SESSION['firstName'];
 	
@@ -71,4 +69,5 @@ session_start();
 
 
 	</body>
+<?php $dbConn = null; // Close connection ?>
 </html>

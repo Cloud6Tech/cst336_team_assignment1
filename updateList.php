@@ -1,5 +1,8 @@
 <?php
-	if (!isset($_SESSION)) { session_start(); }	
+	if (!isset($_SESSION)) { session_start(); }
+	
+	// Redirect to login page if not logged in
+	if(empty($_SESSION['username'])) { header("Location: login.php"); } 
 
 	require_once 'db_connection.php';
 		

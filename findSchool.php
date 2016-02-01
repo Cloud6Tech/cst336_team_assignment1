@@ -1,5 +1,8 @@
 <?php
-  session_start();
+	session_start();
+  
+ 	// Redirect to login page if not logged in
+	if(empty($_SESSION['username'])) { header("Location: login.php"); } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +23,6 @@
 
   <?php
     require 'db_connection.php';
-	
-	if(empty($_SESSION['username'])) {
-		header("Location: login.php");
-	}
 	
     function getSystems() {
     	global $dbConn;
@@ -202,4 +201,5 @@
 	}
   ?>
 </body>
+<?php $dbConn = null; // Close connection ?>
 </html>

@@ -1,14 +1,11 @@
 <?php
 session_start();
+
+// Redirect to login page if not logged in
+if(empty($_SESSION['username'])) { header("Location: login.php"); } 
 ?>
 
 <?php
-
-	//verfires user has logged in. reverts back to login page if not
-	if(!isset($_SESSION['username']))
-	{
-		header("Location: login.php");
-	}
 
 	//verifies user has set all feilds	
 	if (isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['confirm'])  )
@@ -91,4 +88,5 @@ session_start();
 			<a href="signinLog.php"><h3>View your login history</h3></a>-->
 		</div>
 	</body>
+<?php $dbConn = null; // Close connection ?>
 </html>

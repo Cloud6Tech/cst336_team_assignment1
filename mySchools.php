@@ -1,5 +1,8 @@
 <?php
-	session_start();	
+	session_start();
+	
+	// Redirect to login page if not logged in	
+	if(empty($_SESSION['username'])) { header("Location: login.php"); } 
 
 	// Open database connection
 	require 'db_connection.php';
@@ -75,4 +78,5 @@
 				?>
 			</table>
 	</body>
+	<?php $dbConn = null; // Close connection ?>
 </html>

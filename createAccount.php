@@ -113,4 +113,5 @@
 			<a href="login.php">Go back</a>
 		</div>
 	</body>
+<?php $dbConn = null; // Close connection ?>
 </html>
