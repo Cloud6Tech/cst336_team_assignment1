@@ -46,7 +46,7 @@
 		<meta charset="UTF-8"/>
 		<meta name="author" content="Heather McCabe">
 		
-		<title>Admissions Information</title>
+		<title>My Schools</title>
 		
 		<link rel="stylesheet" type="text/css" href="univ.css">
 	</head>

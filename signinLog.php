@@ -30,8 +30,8 @@ if(empty($_SESSION['username'])) { header("Location: login.php"); }
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Team Assignment User Signin Log</title>
-		<meta name="Team Assignment User Signin Log<" content="">
+		<title>Sign In Log</title>
+		<meta name="Sign In Log<" content="">
 		<meta name="author" content="masonm">
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">

@@ -51,8 +51,8 @@ session_start();
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Team Assignment Login</title>
-		<meta name="Team Assignment Login<" content="">
+		<title>California Public University Admissions Database Login</title>
+		<meta name="California Public University Admissions Database Login" content="">
 		<meta name="author" content="masonm">
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
