@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `public_universities` (
   `city` varchar(50) DEFAULT NULL,
   `county` varchar(50) DEFAULT NULL,
   `college_system` varchar(50) DEFAULT NULL,
-  `founded` year(4) DEFAULT NULL,
+  `founded` smallint(4) DEFAULT NULL,
   `students` int(6) DEFAULT NULL,
   `fall_2015_acceptance_percentage` int(3) DEFAULT NULL,
   PRIMARY KEY (`public_university_id`)

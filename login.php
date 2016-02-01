@@ -24,10 +24,10 @@ session_start();
 			//if record is found session variables are stored and user is directed to a new page
 			if (!empty($record))
 			{
-				
-				//$sql = "INSERT INTO userLog (username) VALUES (:username)";
-				//$stmt = $dbConn -> prepare($sql);
-				//$stmt -> execute(array (":username" => $_POST['username']));
+				include 'userLog.php';
+				$sql = "INSERT INTO userLog (username) VALUES (:username)";
+				$stmt = $dbConn -> prepare($sql);
+				$stmt -> execute(array (":username" => $_POST['username']));
 				
 				$_SESSION['username'] = $record['username'];
 				$_SESSION['firstName'] = $record['firstName'];
@@ -51,8 +51,8 @@ session_start();
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Team Assignment Login</title>
-		<meta name="Team Assignment Login<" content="">
+		<title>California Public University Admissions Database Login</title>
+		<meta name="California Public University Admissions Database Login" content="">
 		<meta name="author" content="masonm">
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
@@ -75,22 +75,23 @@ session_start();
 		          <table>
 					<tr>
 					  <td>username:</td>
-					  <td><input type="text" name="username" placeholder="username" /></td>
+					  <td><input type="text" name="username" placeholder="username" required/></td>
 					</tr>
 					<tr>
 					  <td>password:</td>
-					  <td><input type="password" name="password" placeholder="password" /></td>
+					  <td><input type="password" name="password" placeholder="password" required/></td>
 					</tr>
 					<tr>
 					  <td colspan="2" style="text-align: right"><input type="submit" /> <input type="reset" /></td>			
 				 </table>
 			</form>
-			<br><a href="createAccount.php">Click here to create an account.</a>
 			<?php 
-			 if(isset($invalidLogon) and $invalidLogon == true) {
-			 	echo '<p>Invalid Username or Password</p>';
-			 }
+				if(isset($invalidLogon) and $invalidLogon == true) {
+					echo '<p style="color:red">Invalid Username or Password</p>';
+				}
 			?>
+			<br><a href="createAccount.php">Click here to create an account.</a>
+
 		</div>
 
 	</body>

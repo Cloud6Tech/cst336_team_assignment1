@@ -1,6 +1,5 @@
 <?php
-
-	require './db_connection.php'; //credentials for data base login
+	require_once './db_connection.php'; //credentials for data base login
 
 		// creat table for user login 
 		$sql= "CREATE TABLE IF NOT EXISTS `userLog` 
@@ -9,8 +8,5 @@
  			`loginTime` timestamp NOT NULL DEFAULT NOW()
 			)";
 		$stmt = $dbConn -> prepare($sql);
-		$stmt -> execute();
-		
-		echo "table made";
-			
+		$stmt -> execute();			
 ?>

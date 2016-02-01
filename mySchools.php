@@ -1,5 +1,8 @@
 <?php
-	session_start();	
+	session_start();
+	
+	// Redirect to login page if not logged in	
+	if(empty($_SESSION['username'])) { header("Location: login.php"); } 
 
 	// Open database connection
 	require 'db_connection.php';
@@ -43,7 +46,7 @@
 		<meta charset="UTF-8"/>
 		<meta name="author" content="Heather McCabe">
 		
-		<title>Admissions Information</title>
+		<title>My Schools</title>
 		
 		<link rel="stylesheet" type="text/css" href="univ.css">
 	</head>
@@ -75,4 +78,5 @@
 				?>
 			</table>
 	</body>
+	<?php $dbConn = null; // Close connection ?>
 </html>

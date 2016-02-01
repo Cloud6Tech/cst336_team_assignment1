@@ -1,20 +1,16 @@
 <?php
 session_start();
+
+// Redirect to login page if not logged in
+if(empty($_SESSION['username'])) { header("Location: login.php"); } 
+
 ?>
 
 <?php
 
-	require './db_connection.php'; //credentials for data base login
+	require 'db_connection.php'; //credentials for data base login
 	
-	
-	//catch to see if user has logged in and revets to login page if not
-	if(!isset($_SESSION['username']))
-	{
-		header("Location: login.php");
-	}
 	//pulls login times related to username
-	echo "Hello " . $_SESSION['firstName'];
-	
 	$sql = "SELECT * FROM userLog
 				 WHERE username = :username";
 		
@@ -32,8 +28,8 @@ session_start();
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Team Assignment User Signin Log</title>
-		<meta name="Team Assignment User Signin Log<" content="">
+		<title>Sign In Log</title>
+		<meta name="Sign In Log<" content="">
 		<meta name="author" content="masonm">
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
@@ -42,18 +38,19 @@ session_start();
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 				
-		<style>
-			body{background-color: #CCCCCC}
-			form{display: inline}
-		</style>
+		<link rel="stylesheet" type="text/css" href="univ.css">
 		
 	</head>
 
 
 	<body>
-		<h3> Your Login History </h3>
+		<?php include 'navBar.php' ?>
 		
-		
+		<h3> Your Login History 
+			<form action='changePassword.php'>
+				<input type='submit' value='Go Back'>
+			</form>
+		</h3>
 		
 	<?php
 		//prints user logs oldest to newest
@@ -61,14 +58,15 @@ session_start();
 		foreach ($userLogs as $log) 
 		{
 			$userRecord++;
-			echo "Record " . $userRecord . ": " . $log['loginTime'];	
+			echo "Record " . $userRecord . ": " . $log['loginTime'] . "<br>";	
 		}
-	
-	
 	?>
+	
+	
 
 
 
 
 	</body>
+<?php $dbConn = null; // Close connection ?>
 </html>

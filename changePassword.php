@@ -1,19 +1,16 @@
 <?php
 session_start();
+
+// Redirect to login page if not logged in
+if(empty($_SESSION['username'])) { header("Location: login.php"); } 
 ?>
 
 <?php
 
-	//verfires user has logged in. reverts back to login page if not
-	if(!isset($_SESSION['username']))
-	{
-		header("Location: login.php");
-	}
-
-	//verifies user has set all feilds	
+	// Verify user has set all fields	
 	if (isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['confirm'])  )
 	{
-		require './db_connection.php'; //credentials for data base login
+		require './db_connection.php'; // Credentials for data base login
 		
 			
 		if ($_POST['newPassword'] == $_POST['confirm'])
@@ -48,7 +45,7 @@ session_start();
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Upadate Password</title>
+		<title>Update Password</title>
 		<meta name="Update Password" content="">
 		<meta name="author" content="masonm">
 
@@ -91,4 +88,5 @@ session_start();
 			<a href="signinLog.php"><h3>View your login history</h3></a>-->
 		</div>
 	</body>
+<?php $dbConn = null; // Close connection ?>
 </html>
