@@ -59,6 +59,7 @@
 								echo '<input type="submit" name="add" value="Add to My List">';
 							}
 					?>
+					<button onclick="history.go(-2);">Go Back</button>
 					</form>
 				</td></tr>
 			</table>
