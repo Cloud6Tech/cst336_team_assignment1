@@ -64,7 +64,7 @@
 				<?php
 					foreach ($schools as $school) {
 						echo "<tr>";
-							echo "<td>" . $school[2] . "</td>";  // Name
+							echo "<td><a href='./admissions.php?id=" . $school[3] . "'>" . $school[2] . "</a></td>";  // Name
 							echo "<td>" . $school[0] . "</td>";  // Phone
 							echo "<td><a href='" . $school[1] . "'>" . $school[1] . "</a></td>";  // Website
 							

@@ -110,7 +110,10 @@
 
 	<h3 style="text-align:center;">Welcome to Cloud6 Tech's School Finder</h3>
 		
-	<p style="text-align:center;">. Select the options that mean the most to you, and hit submit!</p>
+	<p style="text-align:center;">
+		Select the options that mean the most to you, and hit submit!<br>
+		Click on a school name for more info.
+	</p>
 	
   </div>	
   <div border="1">

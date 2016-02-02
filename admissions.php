@@ -10,7 +10,7 @@
 	function getAdmissionsInfo() {
 		global $dbConn;
 		
-		$sql = "SELECT admissions_offices.phone, admissions_offices.website, public_universities.name 
+		$sql = "SELECT admissions_offices.phone, admissions_offices.website, public_universities.name, public_universities.img
 				FROM admissions_offices
 				INNER JOIN public_universities
 				ON public_universities.public_university_id = admissions_offices.public_university_id
@@ -42,12 +42,15 @@
 				// Get university admissions info
 				$univInfo = getAdmissionsInfo();
 			?>
+			<img src="./images/<?= $univInfo['img'] ?>" style="float:left">
+			<br>
 			<table class="admissionsInfo">
 				<tr><th><?= htmlentities($univInfo['name']) ?></th></tr>
 				<tr><td><?= $univInfo['phone'] ?></td></tr>
 				<tr><td><a href='<?= $univInfo['website'] ?>'><?= $univInfo['website'] ?></a></td></tr>
-				<tr><td>
-					<form method='post' action='updateList.php'>
+			</table>
+			<br>
+			<form method='post' action='updateList.php' style="display: inline">
 						<input type="hidden" name="redirect" value="admissions.php?id=<?=$_GET['id']?>">
 						<input type="hidden" name="univId" value=<?=$_GET['id']?>>
 						<?php
@@ -60,11 +63,9 @@
 							}
 					?>
 					</form>
-					<form action="findSchool.php">
-						<input type="submit" value="Go Back" >
+					<form action="findSchool.php" style="display: inline;">
+						<input type="submit" value="Go Back">
 					</form>
-				</td></tr>
-			</table>
 			
 		</div>
 	
