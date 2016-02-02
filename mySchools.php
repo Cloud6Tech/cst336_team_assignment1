@@ -70,27 +70,27 @@
 			<?php $schools = getList(); ?>
 			
 			<div>
-			<h2 style="text-align: center">Your Previously Selected Schools (<?= getCount() ?> schools)</h2>
-			<table id="showSchools">
-				<tr><th>School</th><th>Phone</th><th>Website</th><th>Actions</th></tr>
-				
-				<?php
-					foreach ($schools as $school) {
-						echo "<tr>";
-							echo "<td><a href='./admissions.php?id=" . $school[3] . "'>" . $school[2] . "</a></td>";  // Name
-							echo "<td>" . $school[0] . "</td>";  // Phone
-							echo "<td><a href='" . $school[1] . "'>" . $school[1] . "</a></td>";  // Website
-							
-							echo "<td><form method='post' action='updateList.php'>";
-							echo "<input type='hidden' name='redirect' value='mySchools.php'>";
-							echo "<input type='hidden' name='univId' value='" . $school[3] . "'>";
-							echo "<input type='submit' name='remove' value='Remove'>";
-							echo "</form></td>";
-							
-						echo "</tr>";
-					}
-				?>
-			</table>
+				<h2>Your Saved Schools (<?= getCount() ?> schools)</h2>
+				<table id="showSchools">
+					<tr><th>School</th><th>Phone</th><th>Website</th><th>Actions</th></tr>
+					
+					<?php
+						foreach ($schools as $school) {
+							echo "<tr>";
+								echo "<td><b><a href='./admissions.php?id=" . $school[3] . "'>" . $school[2] . "</a></b></td>";  // Name
+								echo "<td>" . $school[0] . "</td>";  // Phone
+								echo "<td><a href='" . $school[1] . "'>" . $school[1] . "</a></td>";  // Website
+								
+								echo "<td><form method='post' action='updateList.php'>";
+								echo "<input type='hidden' name='redirect' value='mySchools.php'>";
+								echo "<input type='hidden' name='univId' value='" . $school[3] . "'>";
+								echo "<input type='submit' name='remove' value='Remove'>";
+								echo "</form></td>";
+								
+							echo "</tr>";
+						}
+					?>
+				</table>
 			</div>
 	</body>
 	<?php $dbConn = null; // Close connection ?>

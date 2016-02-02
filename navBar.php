@@ -25,5 +25,5 @@
 		}
 	?>
 	
-	<a href="findSchool.php" class="titleLink"><h1>California Public University Admissions Database</h1></a>
+	<a href="findSchool.php" id="titleLink"><h1>California Public University Admissions Database</h1></a>
 </div>
