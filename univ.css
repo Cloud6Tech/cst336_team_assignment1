@@ -22,16 +22,21 @@ table {
 
 #admissionsInfo {
 	border: solid black 1px;
-	height: 300px;
 	margin: 0 auto;
 	margin-top: 5px;
 	padding: 5px;
 	text-align: center;
-	width: 900px;
+	width: 850px;
 }
-#admissionsInfo table,.accountForm table {
+#admissionsInfo table{
+	background-color: transparent;
 	margin: 0 auto;
 }
+#admissionsInfo th,td {
+	padding: 10px;
+	text-align: center;
+}
+
 #navBar {
 	padding: 20px;
 	text-align: right;
@@ -119,6 +124,10 @@ table {
 }
 .accountForm h3 {
 	text-align: center;
+}
+.accountForm table {
+	background-color: transparent;
+	margin: 0 auto;
 }
 .titleLink {
 	text-decoration: none;
