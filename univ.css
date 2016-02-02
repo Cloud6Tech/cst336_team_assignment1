@@ -88,6 +88,20 @@ form {
 #schoolFinder {
 	margin: 0 auto;
 }
+
+body
+{
+	background-image: url('bg.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+div
+{
+	padding: 10px;
+	background-color: rgba(200,200,200,.25);
+}
+
 .accountForm {
 	background-color: #CCCCCC;
 	border-style: outset;
