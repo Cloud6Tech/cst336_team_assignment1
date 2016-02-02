@@ -36,6 +36,19 @@
 		return $results;
 	}	
 	
+	// Return the number of schools on the user's list
+	function getCount() {
+		global $dbConn;
+		
+		$sql = "SELECT COUNT(univId)
+				FROM user_university_list
+				WHERE username = :username";
+		$stmt = $dbConn -> prepare($sql);
+		$stmt -> execute( array(':username' => $_SESSION['username']));
+		$result = $stmt -> fetch();
+		return $result[0];
+	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +70,7 @@
 			<?php $schools = getList(); ?>
 			
 			<div>
-			<h2 style="text-align: center">Your Previously Selected Schools</h2>
+			<h2 style="text-align: center">Your Previously Selected Schools (<?= getCount() ?> schools)</h2>
 			<table id="showSchools">
 				<tr><th>School</th><th>Phone</th><th>Website</th><th>Actions</th></tr>
 				
