@@ -15,11 +15,11 @@ form {
 	display: inline;
 }
 
-table {
-	background-color: rgba(200,200,200,.2);
-	padding: 8px;
+h1, h2, h3 {
+	text-align: center;
 }
 
+/*** General display div formatting ***/
 #admissionsInfo {
 	border: solid black 1px;
 	margin: 0 auto;
@@ -32,11 +32,12 @@ table {
 	background-color: transparent;
 	margin: 0 auto;
 }
-#admissionsInfo th, #admissionsInfo td {
+#admissionsInfo th, #contentDiv td {
 	padding: 10px;
 	text-align: center;
 }
 
+/*** Formatting for top navigation bar ***/
 #navBar {
 	padding: 20px;
 	text-align: right;
@@ -44,33 +45,30 @@ table {
 	color: white;
 	font-size: 12px;	
 }
-
 #navBar a:link {
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
 }
-
 #navBar a:visited {
 	color: white;
 	text-decoration: none;
 }
-
 #navBar a:hover {
 	color: white;
 	text-decoration: none;
 }
-
 #navBar a:hover {
 	color: white;
 	text-decoration: none;
 }
-
 #navBar h1 {
-	text-align: center;
 	color: white;
+	font-size: 30px;
 }
 
+
+/*** Formatting for findSchool table ***/
 #showSchools {
 	border:#ffffff normal 1px;
 	border-collapse:collapse;
@@ -79,35 +77,31 @@ table {
 	color: #CCC;
 	text-align: center;
 }
-
 #showSchools th {
 	background-color: #002a4e;
 	color: white;
 	padding: 3px;
 }
-
 #showSchools a:link{
 	color:white;
 	text-decoration:none;
 }
-
 #showSchools a:visited{
 	color:white;
 	text-decoration:none;
 }
-
 #showSchools tr:nth-child(even){
 	background: #446a59;
 }
-
 #showSchools tr:nth-child(odd) {
 	background: #8b7e56;
 }
-
 #showSchools td {
 	padding: 3px;
 }
 
+
+/*** Formatting for form to filter schools list on findSchool ***/
 #schoolFinder {
 	border-style: outset;
 	margin: 0 auto;
@@ -115,26 +109,21 @@ table {
 	padding: 20px;
 }
 
+
+/*** Formatting for account forms (login, create account, change password, etc.) ***/
 .accountForm {
 	border-style: outset;
 	padding-top: 10px;
 	margin: 0 auto;
+	margin-top: 20px;
 	text-align: right;
 	width: 350px;
-}
-.accountForm h3 {
-	text-align: center;
 }
 .accountForm table {
 	background-color: transparent;
 	margin: 0 auto;
 }
-.titleLink {
-	text-decoration: none;
-}
-.titleLink:visited {
-	color: black;
-}
-.titleLink:hover {
-	text-decoration: underline;
+
+.transparent {
+	background-color: transparent;
 }

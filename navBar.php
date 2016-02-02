@@ -19,11 +19,12 @@
 	<?php
 		if(!empty($_SESSION['username'])) {
 			echo "Welcome, <a href='changePassword.php'>" . $_SESSION['username'] . "</a> | ";
+			echo "<a href='findSchool.php'>Find a School</a> | ";
 			if (isAdminCheck()) { echo "<a href='editSchools.php'>Edit DB</a> | "; }
 			echo "<a href='mySchools.php'>My Schools</a> | ";
 			echo "<a href='logout.php'>Logout</a>";
 		}
 	?>
 	
-	<a href="findSchool.php" class="titleLink"><h1>California Public University Admissions Database</h1></a>
+	<a href="findSchool.php" id="titleLink"><h1>California Public University Admissions Database</h1></a>
 </div>
