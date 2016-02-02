@@ -56,8 +56,9 @@
 							
 			<?php $schools = getList(); ?>
 			
-			
-			<table>
+			<div>
+			<h2 style="text-align: center">Your Previously Selected Schools</h2>
+			<table id="showSchools">
 				<tr><th>School</th><th>Phone</th><th>Website</th><th>Actions</th></tr>
 				
 				<?php
@@ -77,6 +78,7 @@
 					}
 				?>
 			</table>
+			</div>
 	</body>
 	<?php $dbConn = null; // Close connection ?>
 </html>

@@ -234,15 +234,15 @@
 		echo '</table>'; 
 		echo '</form>';
 		echo '<h3>Admissions Info</h3>';
-		echo '<div id="updateAdmissionsStatus">';
-		if ( isset($_POST['updateAdmissions'])) {	
+		if ( isset($_POST['updateAdmissions'])) {
+		  echo '<div id="updateAdmissionsStatus">';	
       	  if( updateAdmissions() ) {
       		echo "<p><b>Update Succeeded!</b></p>";
       	  } else {
       		echo "<p><b>Update Failed</b></p>";
       	  }
-        }
-		echo '</div>';		
+		  	echo '</div>';	
+        }	
 		echo '<form method="post">';
 		$admissions = getAdmissionsOffice($_GET['univId']);
 		echo '<input type="hidden" name="id" value="' . $admissions['admissions_offices_id'] . '">';
