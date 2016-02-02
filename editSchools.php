@@ -112,6 +112,15 @@
 									":rate" => $_POST['newRate']));	
 	}
 	
+	function removeUniversity()
+	{
+		global $dbConn;
+		$sql = "DELETE FROM public_universities
+				WHERE public_university_id = :id";
+		$stmt = $dbConn -> prepare($sql);
+		return $stmt -> execute( array(':id' => $_GET['univId']));
+	}
+	
   	if(($_SESSION['username']) and isAdmin($_SESSION['username'])) {
   		$isAdmin = true;
   	} else {
@@ -190,7 +199,8 @@
 		if ( isset($_POST['addUniversity'])) {	
       	  if( addUniversity() ) 
       	  {
-      		echo "<p><b>New School Added Successfully</b></p>";
+      		echo "<p><b>New School Added Successfully. Returning to previous menu</b></p>";
+			echo '<meta http-equiv="refresh" content="2; url=editSchools.php">';
       	  } 
       	  else 
       	  {
@@ -245,6 +255,29 @@
 		echo '</table>';
 		echo '</form>';
 		echo '</div>';
+		
+	  	echo '<div>';
+      	echo '<h3> Remove School from Database</h3>';
+      	echo 'warning, this cannot be undone';
+      	echo '<form method="post">';
+		echo '<table>';
+		echo '<tr><td>Remove School:</td>';
+		echo '<td><input type="submit" name="removeUniversity" value="Remove"></td></tr>';
+		if ( isset($_POST['removeUniversity'])) {	
+      	  if( removeUniversity() ) 
+      	  {
+      		echo "<p><b>School Removed Successfully</b></p>";
+			echo '<meta http-equiv="refresh" content="1; url=editSchools.php">';
+      	  } 
+      	  else 
+      	  {
+      		echo "<p><b>Failed to Remove School</b></p>";
+      	  }
+        }		
+		echo '</table>';
+		echo '</form>';
+		echo '</div>';		
+		
       } 
     ?>
 
