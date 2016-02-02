@@ -1,20 +1,38 @@
+body {
+	background-image: url('bg.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+	padding: 10px;
+	background-color: rgba(200,200,200,.25);
+}
+
 form {
 	display: inline;
 }
 
+table {
+	background-color: rgba(200,200,200,.2);
+	padding: 8px;
+}
+
 #admissionsInfo {
 	border: solid black 1px;
+	height: 300px;
 	margin: 0 auto;
 	margin-top: 5px;
 	padding: 5px;
 	text-align: center;
-	width: 350px;
+	width: 900px;
 }
 #admissionsInfo table,.accountForm table {
 	margin: 0 auto;
 }
 #navBar {
-	font-family: Arial, Helvetica, sans-serif;
 	padding: 20px;
 	text-align: right;
 	background-color: #002a4e;
@@ -24,6 +42,7 @@ form {
 
 #navBar a:link {
 	color: white;
+	font-weight: bold;
 	text-decoration: none;
 }
 
@@ -50,7 +69,6 @@ form {
 #showSchools {
 	border:#ffffff normal 1px;
 	border-collapse:collapse;
-	font-family:Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	margin: 0 auto;
 	color: #CCC;
@@ -92,33 +110,12 @@ form {
 	padding: 20px;
 }
 
-body
-{
-	background-image: url('bg.png');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
-div
-{
-	padding: 10px;
-	background-color: rgba(200,200,200,.25);
-}
-
-table
-{
-	background-color: rgba(200,200,200,.2);
-	padding: 8px;
-}
-
 .accountForm {
 	border-style: outset;
-	padding: 25px;
 	padding-top: 10px;
 	margin: 0 auto;
 	text-align: right;
-	width: 325px;
+	width: 350px;
 }
 .accountForm h3 {
 	text-align: center;
