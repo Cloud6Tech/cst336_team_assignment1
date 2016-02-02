@@ -106,105 +106,107 @@
 
 <body>
 	<?php include 'navBar.php' ?>
-  <div>
-
-	<h3 style="text-align:center;">Welcome to Cloud6 Tech's School Finder</h3>
-		
-	<p style="text-align:center;">
-		Select the options that mean the most to you, and hit submit!<br>
-		Click on a school name for more info.
-	</p>
+	<div>
+	  <div border="1" style="float:left">
 	
-  </div>	
-  <div border="1">
-	<form method="POST">
-		<table id="schoolFinder">
-			<tr>
-				<td>System:</td>
-				<td><select name="system">
-						<option value=""> Any </option>
-						<?php
-						$systems = getSystems();
-						foreach($systems as $system){
-							echo '<option value="' . $system['college_system'] . '">' . $system['college_system'] . '</option>';
+		<h3>Welcome to Cloud6 Tech's School Finder!</h3>
+			
+		<p>
+			Select the options that mean the most to you, and hit submit.<br>
+			Click on a school name for more info.
+		</p>
+		
+		<form method="POST">
+			<table id="schoolFinder" style="margin:0 auto">
+				<tr>
+					<td>System:</td>
+					<td><select name="system">
+							<option value=""> Any </option>
+							<?php
+							$systems = getSystems();
+							foreach($systems as $system){
+								echo '<option value="' . $system['college_system'] . '">' . $system['college_system'] . '</option>';
+							}
+							?>
+					</select></td>
+				</tr>
+				<tr>
+					<td>County:</td>
+					<td>
+						<select name="county"> 
+							<option value=""> Any </option>
+							<?php
+							$counties = getCounties();
+							foreach($counties as $county){
+								echo '<option value="' . $county['county'] . '">' . $county['county'] . '</option>';
+							}
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Number of Students:</td>
+					<td>
+						<select name="maxStudents">
+							<option value=""> Any </option>
+							<option value="10000"> less than 10,000</option>
+							<option value="25000"> less than 25,000</option>
+							<option value="100000"> over 25,000</option>
+						</select>
+					</td>
+				</tr>
+				<tr style="text-align:center">
+					<td colspan="2">
+						<input name="submit" type="submit"/> <input type="reset"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	  </div>
+	  <?php
+	    if (isset($_POST['submit']) or isset($_SESSION['where'])) {
+	  ?>
+	  <div id="results" style="float:left" class="transparent">
+	  	<form>
+	  		<table id="showSchools">
+	  			<tr>
+	  				<th>Federal<br/>Code</th>
+	  				<th>System</th>
+	  				<th><a href="findSchool.php?sort=name">University</a></th>
+	  				<th><a href="findSchool.php?sort=city">City</a></th>
+	  				<th>County</th>
+	  				<th><a href="findSchool.php?sort=size">Student Size</a></th>
+	  				<th><a href="findSchool.php?sort=rate">Acceptance<br/> Rate (%)</a></th>
+	  			</tr>
+	  			<?php
+	  			  $records = getSchools($where);
+	  			  foreach($records as $record) {
+	  			  	echo '<tr>';
+					for ($i = 0; $i < count($record)/2; $i++) {
+					  if ($i != 0) {
+					  	echo '<td>';	
+					    if ($i == 3) {
+					  	  echo '<a href=admissions.php?id=' . $record[0] . '>';
+						  echo htmlentities($record[$i]);
+						  echo '</a>';
+						} else {
+					  	echo htmlentities($record[$i]);
 						}
-						?>
-				</select></td>
-			</tr>
-			<tr>
-				<td>County:</td>
-				<td>
-					<select name="county"> 
-						<option value=""> Any </option>
-						<?php
-						$counties = getCounties();
-						foreach($counties as $county){
-							echo '<option value="' . $county['county'] . '">' . $county['county'] . '</option>';
-						}
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Number of Students:</td>
-				<td>
-					<select name="maxStudents">
-						<option value=""> Any </option>
-						<option value="10000"> less than 10,000</option>
-						<option value="25000"> less than 25,000</option>
-						<option value="100000"> over 25,000</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input name="submit" type="submit"/> <input type="reset"/>
-				</td>
-			</tr>
-		</table>
-	</form>
-  </div>
-  <?php
-    if (isset($_POST['submit']) or isset($_SESSION['where'])) {
-  ?>
-  <div id="results">
-  	<form>
-  		<table id="showSchools">
-  			<tr>
-  				<th>Federal<br/>Code</th>
-  				<th>System</th>
-  				<th><a href="findSchool.php?sort=name">University</a></th>
-  				<th><a href="findSchool.php?sort=city">City</a></th>
-  				<th>County</th>
-  				<th><a href="findSchool.php?sort=size">Student Size</a></th>
-  				<th><a href="findSchool.php?sort=rate">Acceptance<br/> Rate (%)</a></th>
-  			</tr>
-  			<?php
-  			  $records = getSchools($where);
-  			  foreach($records as $record) {
-  			  	echo '<tr>';
-				for ($i = 0; $i < count($record)/2; $i++) {
-				  if ($i != 0) {
-				  	echo '<td>';	
-				    if ($i == 3) {
-				  	  echo '<a href=admissions.php?id=' . $record[0] . '>';
-					  echo htmlentities($record[$i]);
-					  echo '</a>';
-					} else {
-				  	echo htmlentities($record[$i]);
+						echo '</td>';
+					  } 
 					}
-					echo '</td>';
-				  } 
-				}
-				echo '</tr>';				
-  			  }
-			?>
-  		</table>
-  	</form>
-  </div>
+					echo '</tr>';				
+	  			  }
+				?>
+	  		</table>
+	  	</form>
+	  </div>
+  	  
   <?php
 	}
   ?>
+  <br style="clear:both">
+  </div>
 </body>
 <?php $dbConn = null; // Close connection ?>
 </html>

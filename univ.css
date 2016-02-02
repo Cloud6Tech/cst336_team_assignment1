@@ -123,3 +123,7 @@ h1, h2, h3 {
 	background-color: transparent;
 	margin: 0 auto;
 }
+
+.transparent {
+	background-color: transparent;
+}
