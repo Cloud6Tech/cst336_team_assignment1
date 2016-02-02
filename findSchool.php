@@ -108,7 +108,9 @@
 	<?php include 'navBar.php' ?>
   <div>
 
-	<p style="text-align:center;">Welcome to Cloud6 Tech's School Finder. Select the options that mean the most to you, and hit submit!</p>
+	<h3 style="text-align:center;">Welcome to Cloud6 Tech's School Finder</h3>
+		
+	<p style="text-align:center;">. Select the options that mean the most to you, and hit submit!</p>
 	
   </div>	
   <div border="1">
