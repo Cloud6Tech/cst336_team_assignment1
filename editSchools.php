@@ -138,7 +138,8 @@
   <div>
     <h2>Database Editor</h2>
     <div id="instructions">
-    	Select a University from the list. Then edit the fields below.
+    	Select a University from the list. Then edit the fields below. <br>
+    	Or select "Add New School" to add a new university. <br>
     	Click "Update" to commit your changes to the database.
     </div>
 
@@ -258,7 +259,7 @@
 		
 	  	echo '<div>';
       	echo '<h3> Remove School from Database</h3>';
-      	echo 'warning, this cannot be undone';
+      	echo '<p style="color:rgb(180,10,10);"> [<b>Warning:</b> this cannot be undone] </p>';
       	echo '<form method="post">';
 		echo '<table>';
 		echo '<tr><td>Remove School:</td>';
