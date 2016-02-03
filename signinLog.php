@@ -46,22 +46,25 @@ if(empty($_SESSION['username'])) { header("Location: login.php"); }
 	<body>
 		<?php include 'navBar.php' ?>
 		
-		<h3> Your Login History 
-			<form action='changePassword.php'>
+	<div>
+		<h3 style="text-align:left"> Your Login History 
+			<form action='findSchool.php'>
 				<input type='submit' value='Go Back'>
 			</form>
 		</h3>
 		
 	<?php
+		echo "<div>";
 		//prints user logs oldest to newest
 		$userRecord = 0;
 		foreach ($userLogs as $log) 
 		{
 			$userRecord++;
-			echo "Record " . $userRecord . ": " . $log['loginTime'] . "<br>";	
+			echo "Record " . $userRecord . ": " . $log['username'] . "- " . $log['loginTime'] . "<br>";	
 		}
+		echo "</div>";
 	?>
-	
+	</div>
 	
 
 

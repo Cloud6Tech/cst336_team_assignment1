@@ -20,8 +20,9 @@
 		if(!empty($_SESSION['username'])) {
 			echo "Welcome, <a href='changePassword.php'>" . $_SESSION['username'] . "</a> | ";
 			echo "<a href='findSchool.php'>Find a School</a> | ";
-			if (isAdminCheck()) { echo "<a href='editSchools.php'>Edit DB</a> | "; }
-			echo "<a href='mySchools.php'>My Schools</a> | ";
+			if (isAdminCheck()) { echo "<a href='editSchools.php'>Edit DB</a> | 
+				<a href='signinLog.php'> User Log</a> |"; }
+			echo "<a href='mySchools.php'> My Schools</a> | ";
 			echo "<a href='logout.php'>Logout</a>";
 		}
 	?>
