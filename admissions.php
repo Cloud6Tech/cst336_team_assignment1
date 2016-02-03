@@ -6,18 +6,7 @@
 
 	// Open database connection
 	require 'db_connection.php';
-	
-	function pullImages()
-	{
-		global $dbConn;
-		$sql = "SELECT imgStore 
-				FROM public_universities
-				WHERE public_universities.public_university_id = :univId";
-		$stmt = $dbConn -> prepare($sql);
-		$stmt -> execute(array(":UnivId" => $_GET['id']));
-		return $stmt->fetch();
-	}
-	
+
 	function getAdmissionsInfo() {
 		global $dbConn;
 		
