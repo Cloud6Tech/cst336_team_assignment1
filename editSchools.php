@@ -102,14 +102,28 @@
 		$sql = "INSERT INTO public_universities (federal_school_code, name, city, county, college_system, founded, students, fall_2015_acceptance_percentage)
 					VALUES (:code,:name,:city,:county,:college_system,:founded,:students,:rate)";
 			$stmt = $dbConn -> prepare($sql);
-			return $stmt -> execute( array(":code" => $_POST['newCode'],
+			$stmt -> execute( array(":code" => $_POST['newCode'],
 									":name" => $_POST['newName'],
 									":city" => $_POST['newCity'],
 									":county" => $_POST['newCounty'],
 									":college_system" => $_POST['newCollegeSystem'],
 									":founded" => $_POST['newFounded'],
 									":students" => $_POST['newStudents'],
-									":rate" => $_POST['newRate']));	
+									":rate" => $_POST['newRate']));
+									
+		$sql = "SELECT public_university_id
+				FROM public_universities
+				WHERE federal_school_code = :code";
+		$stmt = $dbConn -> prepare($sql);
+		$stmt -> execute( array(":code" => $_POST['newCode']));
+		$newId = $stmt -> fetch();	
+
+		$sql = "INSERT INTO admissions_offices (public_university_id,phone,website)
+				VALUES (:id,:phone,:website)";
+		$stmt = $dbConn -> prepare($sql);
+		return $stmt -> execute( array(	":id" => $newId[0],
+										":phone" => $_POST['newPhone'],
+									    ":website" => $_POST['newWebsite']));
 	}
 	
 	function removeUniversity()
@@ -196,6 +210,10 @@
 		echo '<td><input type="number" name="newRate" min="1" max="100" value="' . '"/>' . '%</td></tr>';
 		echo '<tr><td>Students:</td>';
 		echo '<td><input type="number" size="8" name="newStudents" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>Admissions Phone:</td>';
+		echo '<td><input type="text" size="12" name="newPhone" value="' . '"/>' . '</td></tr>';
+		echo '<tr><td>Admissions Website:</td>';
+		echo '<td><input type="text" size="12" name="newWebsite" value="' . '"/>' . '</td></tr>';
 		echo '<tr><td><input type="submit" name="addUniversity" value="Add"></td></tr>';
 		if ( isset($_POST['addUniversity'])) {	
       	  if( addUniversity() ) 
